@@ -15,28 +15,20 @@ public class BusinessLogic {
         data.put("IBM", prices_IBM);
     }
 
-    public static int calculatePrice(String input) {
-        String[] request = input.split("\n");
-        if (request.length != 3)
-            return -1;
-        String[] companyInput = request[0].split(":");
-        String company = companyInput[1];
-        String[] symbolInput = request[1].split(":");
-        String symbol = symbolInput[1];
-        String[] quantityInput = request[2].split(":");
-        int quantity = Integer.parseInt(quantityInput[1]); 
+    public static int calculatePrice(String symbol, String  company, int quantity) {
         int result = -1;
-        if(!data.containsKey(symbol)) {
+        String symb = symbol.trim();
+        if(!data.containsKey(symb)) {
             return -1;
         }
         if (company.equalsIgnoreCase("ABC Inc")) {
-            result = quantity * data.get(symbol).get(1);
+            result = quantity * data.get(symb).get(1);
         }
         else if (company.equalsIgnoreCase("XYZ Inc")) {
-            result = quantity * data.get(symbol).get(2);
+            result = quantity * data.get(symb).get(2);
         }
         else {
-            result = quantity * data.get(symbol).get(0);
+            result = quantity * data.get(symb).get(0);
         }
         return result;
     }
