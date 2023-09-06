@@ -17,11 +17,17 @@ public class Client {
                 System.out.print("Enter Quantity: ");
                 int quantity = Integer.parseInt(input.readLine());
 
-                String request = company + "," + symbol + "," + quantity;
-                out.writeUTF(request);
+                String req = "Company:" + company + "\n" + "Symbol:"+ symbol + "\n" + "Number Ordered:" + quantity;
+                byte[] request = req.getBytes();
+
+                out.writeInt(request.length);
+                out.write(request);
                 out.flush();
-                String response = in.readUTF();
-                System.out.println(response);
+
+                int responseLength = in.readInt();
+                byte[] response = new byte[responseLength];
+                in.readFully(response);
+                System.out.println(new String(response));
             }
         }
         catch (IOException e) {
