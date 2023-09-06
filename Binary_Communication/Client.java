@@ -10,14 +10,11 @@ public class Client {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Connected to server.");
             while(true) {
-                System.out.print("Enter Company: ");
-                String company = input.readLine();
-                System.out.print("Enter Symbol: ");
-                String symbol = input.readLine();
-                System.out.print("Enter Quantity: ");
-                int quantity = Integer.parseInt(input.readLine());
+                String companyInput = input.readLine();
+                String symbolInput = input.readLine();
+                String quantityInput = input.readLine();
 
-                String req = "Company:" + company + "\n" + "Symbol:"+ symbol + "\n" + "Number Ordered:" + quantity;
+                String req = companyInput + "\n" + symbolInput + "\n" + quantityInput;
                 byte[] request = req.getBytes();
 
                 out.writeInt(request.length);
