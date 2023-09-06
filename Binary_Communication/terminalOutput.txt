@@ -1,0 +1,21 @@
+***Client Side Output:
+C:\Users\HP\OneDrive\Desktop\Binary_communication> javac Client.java
+C:\Users\HP\OneDrive\Desktop\Binary_communication> java Client      
+Connected to server.
+Enter Company: Apple Computers
+Enter Symbol: AAPL
+Enter Quantity: 4
+Price: 400
+Enter Company: ABC Inc
+Enter Symbol: IBM
+Enter Quantity: 2
+Price: 220
+Enter Company: DEF Inc
+Enter Symbol: SHE
+Enter Quantity: 4
+Price: ERROR NOT KNOWN
+
+***Server Side Output:
+C:\Users\HP\OneDrive\Desktop\Binary_communication> javac Server.java
+C:\Users\HP\OneDrive\Desktop\Binary_communication> java Server
+Server listening on port 1234
