@@ -11,12 +11,20 @@ public class Server {
             DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
 
             while(true) {
-                int requestLength = in.readInt();
-                byte[] request = new byte[requestLength];
-                in.readFully(request);
+                byte[] symbolBytes = new byte[4];
+                in.readFully(symbolBytes);
+                String symbol = new String(symbolBytes);
+                StringBuilder companyBuilder = new StringBuilder();
+                byte b = in.readByte();
+                while (b != 0) {
+                    companyBuilder.append((char) b);
+                    b = in.readByte();
+                }
+                String company = companyBuilder.toString();
+                int numOrdered = in.readInt();
 
                 BusinessLogic businessLogic = new BusinessLogic();
-                int result = businessLogic.calculatePrice(new String(request));
+                int result = businessLogic.calculatePrice(symbol, company, numOrdered);
                 String response;
                 if (result == -1)
                     response = "Price: ERROR NOT KNOWN";
