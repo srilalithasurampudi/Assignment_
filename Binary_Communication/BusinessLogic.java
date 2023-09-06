@@ -16,10 +16,15 @@ public class BusinessLogic {
     }
 
     public static int calculatePrice(String input) {
-        String[] request = input.split(",");
-        String company = request[0];
-        String symbol = request[1];
-        int quantity = Integer.parseInt(request[2]); 
+        String[] request = input.split("\n");
+        if (request.length != 3)
+            return -1;
+        String[] companyInput = request[0].split(":");
+        String company = companyInput[1];
+        String[] symbolInput = request[1].split(":");
+        String symbol = symbolInput[1];
+        String[] quantityInput = request[2].split(":");
+        int quantity = Integer.parseInt(quantityInput[1]); 
         int result = -1;
         if(!data.containsKey(symbol)) {
             return -1;
